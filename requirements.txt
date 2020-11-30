@@ -1,0 +1,11 @@
+Libraries
+
+- File management: os, shutil, glob
+- Google: drive,colab
+- Data Analysis: Numpy, Pandas
+- Image manipulation: OpenCV, PIL
+- Visualization: Matplotlib, Seaborn
+- Neural Networks: TensorFlow|Keras
+- Metrics: scikit-learn
+
+

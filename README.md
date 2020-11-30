@@ -9,14 +9,17 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 
  *It’s not some kind of miracle, cancer doesn’t grow from yesterday to today. It’s a pretty long process. There are signs in the tissue, but the human eye has limited ability to detect what may be very small patterns.*
 
-<p style="text-align: right";> Regina Barzilay, <br />first winner of the Squirrel AI Award for Artificial Intelligence for the Benefit of Humanity<br/><br/>
+<p style="text-align: right";>
+  Regina Barzilay,<br />
+  first winner of the Squirrel AI Award for AI for the Benefit of Humanity<br/><br/>
 </p>
 
-<div
+<div>
 <p align="center", >
 <img width="392" height="240" src="src/child-purple.jpg">
   <a href="https://www.news-medical.net/health/Childhood-Acute-Lymphoblastic-Leukemia.aspx">
-    <p style="text-align: center;font-size:12px;">Source: news-medical.net
+    <p style="text-align: center;font-size:12px;">
+        Source: news-medical.net
     </p>
   </a>
 </div>
@@ -60,30 +63,13 @@ In total there are **15,135 images** from **118 patients** with two **labelled c
 
 **C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folds:
 
-- training_data (images)
-  - fold_0
-    - all
-    - hem
-  - fold_1
-    - all
-    - hem
-  - fold_2
-    - all
-    - hem
-
-- testing_data (images)
-  - C-NMC_test_final_phase_data
-
-- validation_data
-  - C-NMC_test_preliminar_phase_data (images)
-  - C-NMC_test_preliminar_phase_data.csv
+<p align="center", >
+<img width="397" height="336" src="src/tree_C-NMC_Leukemia.jpg">
+</p>
 
 where:
-  - all: Leukemia
-  - hem: normal (healty)
-
-The ground truth labels of the final test set are not provided.
-
+  - all: Leukemia cells
+  - hem: Normal (healty) cells
 
 ## Objective
 
@@ -116,19 +102,16 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 
 ## Project structure  
 
-### GitHub
-- **PR07_readme.md** Description of the project.
-- **link_drive.txt**
-
-### Google Drive
+- **README.md** Description of the project.
 - **src** Images and resources.
 - **input** Folder containing the original data.
 - **notebooks**
-  - **modules**
-  - **0.utility**
+  - **modules** Folder containing all the custom function created with Python.
   - **1.EDA**
+  - **2.models**
+  - **3.test**
 
-* **output** Folder containing the final models.
+* **output** Folder containing the training dataset and final models.
 * **.gitignore**
 
 ## Tools
