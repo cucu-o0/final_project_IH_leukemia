@@ -29,8 +29,12 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 - [Overview](#Overview)
   - [Data](#Data)
   - [Description of the Dataset](#Description_of_the_Dataset)
-- [Objective](#Objective)
+- [Goal](#Goal)
 
+- [ANNa](#ANNa)
+  - [Meet ANNa](#Meet ANNa)
+      - [U-Net](#U-Net)
+  - [Link](#Link)
 - [Workflow](#Workflow)
   - [Cloud](#Cloud)
   - [Link](#Link)
@@ -64,19 +68,46 @@ In total there are **15,135 images** from **118 patients** with two **labelled c
 **C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folds:
 
 <p align="center", >
-<img width="397" height="336" src="src/tree_C-NMC_Leukemia.jpg">
+<img width="278" height="235" src="src/tree_C-NMC_Leukemia.jpg">
 </p>
 
 where:
   - all: Leukemia cells
-  - hem: Normal (healty) cells
+  - hem: Normal (healthy) cells
 
-## Objective
+## Goal
 
 Tackle one of the major childhood cancer types by **creating a model to classify normal from abnormal cell images**.
 
 <p <br/><br/>
 </p>
+
+## ANNa
+
+To achieve our goal, we create **ANNa**, a **Convolutional Network for Biomedical Image Segmentation** (**U-Net**)
+
+Essentially, it is a deep-learning framework based on **fully convolutional neural** (**FCNs**) networks.
+
+### Meet ANNa
+
+#### Medical Image Segmentation
+
+**Medical Image Segmentation** is the process of **automatic or semi-automatic detection of boundaries within a 2D or 3D image**.
+
+#### U-Net
+
+In this section, we explore **U-Net**, by Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+
+After some research, we came to the conclusion that the best model to achieve our goal is
+
+<div>
+<p align="center", >
+<img width="518" height="345" src="src/u-net-architecture.png">
+    <p style="text-align: center;font-size:12px;">
+        U-Net architecture
+    </p>  
+  </a>
+</div>
 
 ## Workflow
 
@@ -107,18 +138,19 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 - **input** Folder containing the original data.
 - **notebooks**
   - **modules** Folder containing all the custom function created with Python.
-  - **1.EDA**
-  - **2.models**
-  - **3.test**
+  - **1. EDA**
+  - **2. Image Preprocessing**
+  - **3. ANNa**
+  - **4. test**
 
-* **output** Folder containing the training dataset and final models.
+* **output** Folder containing the training dataset (csv) and final models (models).
 * **.gitignore**
 
 ## Tools
 
 **System**
 
-- **Processor**: Intel(R) Core(TM)i7-8750H CPU @ 2.20gHz
+- **Processor**: Intel(R) Core(TM) i7-8750H CPU @ 2.20gHz
 - **RAM**: 16Gb
 
 **Libraries**
@@ -139,10 +171,10 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 **Google Colab**
 - [Google Colab](https://medium.com/swlh/machine-learning-google-colab-why-when-and-how-to-use-it-9624e34abd6d)
 
-**Machine Learning**
-
 
 **Deep Learning**
 - [Deep Learning and Medical Image Analysis with Keras](https://www.pyimagesearch.com/2018/12/03/deep-learning-and-medical-image-analysis-with-keras/)
 - [Deep learning with Python-François Chollet](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)
 - GitHub: [deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks)
+
+**UNE-t**
