@@ -16,10 +16,7 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 
 <div>
 <p align="center", >
-<img width="392" height="240" src="src/child-purple.jpg">
-  <a href="https://www.news-medical.net/health/Childhood-Acute-Lymphoblastic-Leukemia.aspx">
-    <p style="text-align: center;font-size:12px;">
-        Source: news-medical.net
+<img width="738" height="462" src="src/leukemia_cells.jpg">
     </p>
   </a>
 </div>
@@ -32,8 +29,12 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 - [Goal](#Goal)
 
 - [ANNa](#ANNa)
-  - [Meet ANNa](#Meet ANNa)
+  - [Meet ANNa](#Meet_ANNa)
+      - [Medical Image Segmentation](#Medical_Image_Segmentation)
       - [U-Net](#U-Net)
+      - [U-Net engineering](#U-Net_engineering)
+      - [Metrics](#Metrics)
+      - [Conclusions](#Conclusions)
   - [Link](#Link)
 - [Workflow](#Workflow)
   - [Cloud](#Cloud)
@@ -86,19 +87,37 @@ Tackle one of the major childhood cancer types by **creating a model to classify
 
 To achieve our goal, we create **ANNa**, a **Convolutional Network for Biomedical Image Segmentation** (**U-Net**)
 
-Essentially, it is a deep-learning framework based on **fully convolutional neural** (**FCNs**) networks.
+As a general **convolutional neural network** focuses its task on **image classification**, where **input** is an **image** and **output** is one **label**, but in **biomedical cases**, it requires us not only to distinguish whether there is a disease, but also to **localise** the area of abnormality.
+
+The reason it is able to localise and distinguish borders is by doing **classification on every pixel**, so the input and output share the same size.
 
 ### Meet ANNa
 
-#### Medical Image Segmentation
+Let's discover **ANNa's Brain**!
 
-**Medical Image Segmentation** is the process of **automatic or semi-automatic detection of boundaries within a 2D or 3D image**.
+In **Medical testing**, **Binary classification** is used to determine if a patient has certain disease or not (in our case, **Leukemia** or **Healty Cells**).
 
-#### U-Net
+We create a **brain** made up of two parts:
 
-In this section, we explore **U-Net**, by Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+- 1. **U-Net**: **Convolutional Network** for **Biomedical Image Segmentation**
 
-After some research, we came to the conclusion that the best model to achieve our goal is
+      **Medical Image Segmentation** is the process of **automatic or semi-automatic detection of boundaries within a 2D or 3D image**.
+
+      - Input: Image shape
+      - Output: U-Net output
+
+- 2. **Binary Classification**: **Neural Network**
+
+      **Binary Classification**is used to determine if a patient has certain disease or not (in our case, **Leukemia** or **Healty Cells**).
+
+        - Input: U-Net output
+        - Output: Classification output
+
+### U-Net
+
+Now let’s get to the detail **implementation of U-Net**by Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+
+U-Net basic foundation looks like:
 
 <div>
 <p align="center", >
@@ -108,6 +127,90 @@ After some research, we came to the conclusion that the best model to achieve ou
     </p>  
   </a>
 </div>
+
+ First sight, it has a `U shape`. The architecture is symmetric and consists of two major parts:
+
+  - 1. `contracting path` (left): constituted by the general convolutional process;
+  - 2. `expansive path` (right): constituted by transposed 2d convolutional layers.
+
+For detailed information about U-Net structure, please check out this article: [U-Net line by line explanation](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5).
+
+### Classification
+
+**Neural networks** will learn by figuring out that they got wrong and then working backward into the algorithm to discover what values and connections made the output incorrect.
+
+The Neural Network is able to determine if a cell is healthy or not.
+
+<div>
+<p align="center", >
+<img width="392" height="285" src="src/NN.jpg">
+    <p style="text-align: center;font-size:12px;">
+        Neural Network
+    </p>  
+  </a>
+</div>
+
+
+## Brain engineering
+
+Techniques used to **optimize** the behaviour of our Neuronal Networks.
+
+- 1. **Early Stopping**
+
+      **Early Stopping** is a regularization technique to combat the **overfitting issue**. With Early Stopping, we just stop training as soon as the validation error reaches the minimum.
+
+- 2. **Learning Rate**
+
+      **Deep learning neural** networks are trained using the **stochastic gradient descent optimization algorithm**.
+
+      The **learning rate** is a hyperparameter that controls **how much to change the model** in response to the **estimated error** each time the model weights are updated.
+
+#### Performance Charts
+
+Once you fit a deep learning neural network model, you must evaluate its performance on a test dataset.
+
+- 1. **Classification Report** & **Confusion Matrix**
+
+     Model Evaluation Metrics:
+    - **Accuracy** tells you what percentage of the predictions are correct.
+    - **Precision** tells us the following: from the positive predictions I have made, what percentage are positive.
+    - **Recall** (opposed to precision), is useful when the cost of a false negative is high. It tells us: of all the positive predictions, what percentage confirms the prediction.
+    - **F1-score** seeks a balance between precision and recall.
+
+- 2. **Sensitivity** and **specificity** are statistical measures of the performance of a binary classification test that are widely used in **medicine**.
+
+      - **Sensitivity** measures the proportion of true positives that are correctly identified.
+      - **Specificity** measures the proportion of true negatives.
+
+- 3. **ROC curve**
+
+    **AUC-ROC** curve is a performance measurement for classification problem at various thresholds settings. It tells how much model is capable of distinguishing between classes.
+
+
+
+  - X. **Validation Curve**
+
+      A Validation Curve is an important diagnostic tool that shows the sensitivity between to changes in a Machine Learning model’s accuracy with change in some parameter of the model.
+
+  - X. **Dice Coefficient**
+
+      The **Dice coefficient** is a statistical indicator that measures the similarity of two samples.
+
+## Conclusions
+
+...
+
+<p <br/><br/>
+</p>
+
+## Future Improvements
+
+- Apply **ANNa** to **biomedical images** that require to **localise** the **area of abnormality**.
+
+- **ANNa's Implementation** using **Pytorch** developed by Facebook’s AI research group. The advantage of Pytorch is that we can have more flexibility and control than Keras.
+
+<p <br/><br/>
+</p>
 
 ## Workflow
 
@@ -122,7 +225,7 @@ This project was done entirely in the **cloud**, using:
 
 **Google Colab** is an online cloud based platform based on the Jupyter Notebook framework, designed mainly for use in ML and deep learning operations.
 
-Other advantage of **Colab** is data versatility, allowing to ‘mount’ Google Drive onto your notebook.
+Other advantage of **Colab** is data versatility, allowing to ‘mount’ Google Drive onto our notebook.
 
 ### Link
 To access the entire project, please open the following link:
@@ -143,8 +246,15 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
   - **3. ANNa**
   - **4. test**
 
-* **output** Folder containing the training dataset (csv) and final models (models).
+* **output**
+  - **arrays**
+  - **csv**
+  - **models**
+  - **viz**
 * **.gitignore**
+
+<p <br/><br/>
+</p>
 
 ## Tools
 
@@ -155,13 +265,14 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 
 **Libraries**
 
-- File management: os, importlibmachinery, shutil, glob
-- Google: drive,colab
-- Data Analysis: Numpy, Pandas
-- Image manipulation: OpenCV, PIL
-- Visualization: Matplotlib, Seaborn
-- Neural Networks: TensorFlow|Keras
-- Metrics: scikit-learn
+- File management: sys | os | glob
+- Google: drive | colab
+- Data Analysis: Numpy | Pandas
+- Image manipulation: OpenCV | PIL
+- Visualization: Matplotlib | Seaborn
+- Neural Networks: TensorFlow | Keras
+- Metrics: Scikit-learn
+
 
 <p <br/>
 </p>
@@ -171,10 +282,13 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 **Google Colab**
 - [Google Colab](https://medium.com/swlh/machine-learning-google-colab-why-when-and-how-to-use-it-9624e34abd6d)
 
-
 **Deep Learning**
 - [Deep Learning and Medical Image Analysis with Keras](https://www.pyimagesearch.com/2018/12/03/deep-learning-and-medical-image-analysis-with-keras/)
-- [Deep learning with Python-François Chollet](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)
-- GitHub: [deep-learning-with-python-notebooks](https://github.com/fchollet/deep-learning-with-python-notebooks)
+- [Types of Convolutions in DL](https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d)
+- [How to Calculate Precision, Recall, F1 and More for Deep Learning Models](https://machinelearningmastery.com/how-to-calculate-precision-recall-f1-and-more-for-deep-learning-models/)
+- [ML Model Regularization](https://towardsdatascience.com/machine-learning-model-regularization-in-practice-an-example-with-keras-and-tensorflow-2-0-52a96746123e)
+- [Optimizers in Deep Learning](https://medium.com/analytics-vidhya/this-blog-post-aims-at-explaining-the-behavior-of-different-algorithms-for-optimizing-gradient-46159a97a8c)
 
 **UNE-t**
+- [Convolutional Neural Network](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+- [U-Net line by line explanation](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
