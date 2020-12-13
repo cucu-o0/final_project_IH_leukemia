@@ -73,11 +73,15 @@ where:
   - all: Leukemia cells
   - hem: Normal (healthy) cells
 
+We will use **training_data** to train the model and **validation_data** to evaluate it because it contains labeled images.
+
+We won't use **testing_data** because images are not labeled and not useful for our project.
+
 ## Goal
 
-Tackle one of the major types of childhood cancer by creating a **model** that **classifies** between **diseased** and **healthy cells**.
+Tackling one of the major types of childhood cancer by creating a **model** that **classifies** between **diseased** and **healthy cells**.
 
-To do this, we use **Deep learning** or **neural networks** are a flexible type of machine learning. They are models composed of **nodes** and **layers** inspired by the structure and function of the **brain**.
+To do this, we use  **Neural Networks**, a computer system modeled on the **human brain** and **nervous system**.
 
 <p <br/><br/>
 </p>
@@ -91,19 +95,19 @@ https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sha
 
 ## ANNa
 
-To achieve our goal, we create **ANNa**, a **Convolutional Network for Biomedical Image Segmentation** (**U-Net**)
+To achieve our goal, we create **ANNa**, an **Artificial Neural Network anti-Leukemia**.
 
-As a general **convolutional neural network** focuses its task on **image classification**, where **input** is an **image** and **output** is one **label**, but in **biomedical cases**, it requires us not only to distinguish whether there is a disease, but also to **localise** the area of abnormality.
+**ANNa** is the combination of a **Convolutional Network** for **Biomedical Image Segmentation** (**U-Net**) and a Traditional **Neural Network** for **Binary Classification**.
 
-The reason it is able to localise and distinguish borders is by doing **classification on every pixel**, so the input and output share the same size.
+We choose Convolutional Neural Networks because they are a category of Neural Networks that have proven very effective in areas such as image recognition and classification.
 
-### Meet ANNa
+### Meet ANNa's Brain
 
 Let's discover **ANNa's Brain**!
 
-In **Medical testing**, **Binary classification** is used to determine if a patient has certain disease or not (in our case, **Leukemia** or **Healty Cells**).
+In **Medical testing**, **Binary classification** is used to determine if a patient has certain disease (in our case, **Leukemia**) or not.
 
-We create a **brain** made up of two parts:
+For this reason, we create a **Brain** made up of two parts:
 
 - 1. **U-Net**: **Convolutional Network** for **Biomedical Image Segmentation**
 
@@ -112,18 +116,15 @@ We create a **brain** made up of two parts:
       - Input: Image shape
       - Output: U-Net output
 
-- 2. **Binary Classification**: **Neural Network**
-
-      **Binary Classification**is used to determine if a patient has certain disease or not (in our case, **Leukemia** or **Healty Cells**).
+- 2. **Binary Classification**: **Neural Networks**
 
         - Input: U-Net output
         - Output: Classification output
 
 ### U-Net
 
-Now let’s get to the detail **implementation of U-Net** by Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+Let’s get to a more detailed **implementation of U-Net** by Olaf Ronneberger, Philipp Fischer, and Thomas Brox (2015).
 
-U-Net basic foundation looks like:
 
 <div>
 <p align="center", >
@@ -134,18 +135,21 @@ U-Net basic foundation looks like:
   </a>
 </div>
 
- First sight, it has a `U shape`. The architecture is symmetric and consists of two major parts:
+First sight U-Net has an `U shape`. The architecture is symmetric and consists of two major parts:
 
-  - 1. `contracting path` (left): constituted by the general convolutional process;
-  - 2. `expansive path` (right): constituted by transposed 2d convolutional layers.
+  - 1. `contracting path` (left): the general convolutional process;
+  - 2. `expansive path` (right): transposed 2d convolutional layers.
 
-For detailed information about U-Net structure, please check out this article: [U-Net line by line explanation](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5).
+The main idea behind CNN is to learn the feature mapping of an image and exploit it to make more **nuanced feature mapping**.
+
+For detailed information about CNN/U-Net structure, please check out these articles:
+
+- [Convolutional Neural Network](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+- [U-Net line by line explanation](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
 
 ### Classification
 
-**Neural networks** will learn by figuring out that they got wrong and then working backward into the algorithm to discover what values and connections made the output incorrect.
-
-Our **Neural Network** for **Binary Classification** is able to determine if a cell is healthy or not.
+The task of the **Neural Network** for **Binary Classification** is to **distinguish** between diseased and healthy cells.
 
 <div>
 <p align="center", >
@@ -159,40 +163,73 @@ Our **Neural Network** for **Binary Classification** is able to determine if a c
 
 ### Brain engineering
 
-During the training process of a Neural Network, our aim is to try and minimize the loss function, by updating the values of the parameters (Weights) and make our predictions as accurate as possible.
+During the training process of a Neural Network, our aim is to try and **minimize** the **loss function** by updating the values of the parameters and make our predictions as accurate as possible.
 
-Techniques used to **optimize** the behaviour of our Neuronal Networks.
+We have tried different techniques to **optimize** the behaviour of our Neuronal Networks.
 
-- 1. **Early Stopping**
+- 1. **Image Data Augmentation**
 
-      **Early Stopping** is a regularization technique to combat the **overfitting issue**. With Early Stopping, we just stop training as soon as the validation error reaches the minimum.
+      Image data augmentation is used to artificially expand the size of a training dataset by creating **modified versions of images**.
+
+      Augmentation techniques can create variations of the images that can improve the ability of the train model to generalize what they have learned to new images.
+
+      In our case, data augmentation does not give any benefit to the training so we decide not to use it.
 
       <p <br/><br/>
       </p>
-- 2. **Learning Rate**
+- 2. **Early Stopping**
 
-      **Deep learning neural** networks are trained using the **stochastic gradient descent optimization algorithm**.
+      **Early Stopping** is a regularization technique to combat the **overfitting issue**. With Early Stopping, we just stop training as soon as the validation error reaches the minimum.
+      <p <br/><br/>
+      </p>
+
+- 3. **Optimizer**
+
+      **Deep learning neural** networks are trained using the optimization algorithm **Adam** (adaptive moment estimation).
+
+      The most beneficial nature of Adam optimization is its **adaptive learning rate**.
+
+- 4. **Learning Rate**
 
       The **learning rate** is a hyperparameter that controls **how much to change the model** in response to the **estimated error** each time the model weights are updated.
 
 ### Performance Charts
 
-Once you fit a deep learning neural network model, you must evaluate its performance on a test dataset.
+Once you fit a deep learning neural network model, you must evaluate its performance on a test dataset (in our case **validation_data**).
 
-- 1. **Classification Report** & **Confusion Matrix**
+- 1. **Classification Report**
 
      Model Evaluation Metrics:
-    - **Accuracy** tells you what percentage of the predictions are correct.
-    - **Precision** tells us the following: from the positive predictions I have made, what percentage are positive.
-    - **Recall** (opposed to precision), is useful when the cost of a false negative is high. It tells us: of all the positive predictions, what percentage confirms the prediction.
+    - **Accuracy** shows us how comfortable the model is with detecting the positive and negative class.
+    - **Precision** tells us about the success probability of making a correct positive class classification.
+    - **Recall** explains how sensitive the model is towards identifying the positive class.
     - **F1-score** seeks a balance between precision and recall.
 
-- 2. **Sensitivity** and **specificity** are statistical measures of the performance of a binary classification test that are widely used in **medicine**.
+    **F1-score** is the most complete when evaluating our test since it takes into account **false negatives** and **false positives**.
+
+    Even evaluating with the F1-score, it is interesting to expose both the precision and the recall, to see in more detail what type of error is made more often.
+    <p <br/><br/>
+    </p>
+- 2. **Confusion Matrix**
+
+    A confusion matrix tells us the performance of our algorithm or test, where the rows are the actual data and the columns the predictions.
+
+      `TP` = `True Positive` Real: Leukemia | Prediction: Leukemia
+
+      `FN` = `False Negative` Real: Leukemia | Prediction: No Leukemia
+
+      `FP` = `False Positive` Real: No Leukemia | Prediction: Leukemia
+
+      `TN` = `True Negative` Real: No Leukemia | Prediction: No Leukemia
+      <p <br/><br/>
+      </p>
+- 3. **Sensitivity** and **specificity** are statistical measures of the performance of a binary classification test that are widely used in **medicine**.
 
       - **Sensitivity** measures the proportion of true positives that are correctly identified.
       - **Specificity** measures the proportion of true negatives.
-
-- 3. **ROC curve**
+      <p <br/><br/>
+      </p>
+- 4. **ROC curve**
 
     **AUC-ROC** curve is a performance measurement for classification problem at various thresholds settings. It tells how much model is capable of distinguishing between classes.
 
@@ -208,9 +245,13 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
 ### Future Improvements
 
-- Apply **ANNa** to **biomedical images** that require to **localise** the **area of abnormality**.
+- Improve **ANNa's performance** choosing other parameters.
 
 - **ANNa's Implementation** using **Pytorch** developed by Facebook’s AI research group. The advantage of Pytorch is that we can have more flexibility and control than Keras.
+
+- Apply **ANNa** to **biomedical images** that require to **localise** the **area of abnormality**.
+
+- Keep learning Computer Vision and Deep Learning!
 
 <p <br/><br/>
 </p>
@@ -225,16 +266,18 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 - **notebooks**
   - **modules** Folder containing all the custom function created with Python.
   - **1.EDA**
-  - **2.Image Preprocessing**
-  - **3.Testing ANNa**
+  - **2.Image_preprocessing**
+  - **3.mini_ANNa**
+  - **3.1.Test_mini_ANNa**
   - **4.ANNa**
-  - **5.Test**
+  - **4.1.Test_ANNa**
 
 - **output**
   - **arrays**
   - **csv**
   - **models**
   - **viz**
+
 - **.gitignore**
 
 <p <br/><br/>
@@ -278,7 +321,11 @@ Other advantage of **Colab** is data versatility, allowing to ‘mount’ Google
 - [Types of Convolutions in DL](https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d)
 - [Convolutional Neural Network](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
 - [ML Model Regularization](https://towardsdatascience.com/machine-learning-model-regularization-in-practice-an-example-with-keras-and-tensorflow-2-0-52a96746123e)
+- [Keras metrics](https://neptune.ai/blog/keras-metrics)
 - [How to Calculate Precision, Recall, F1 and More for Deep Learning Models](https://machinelearningmastery.com/how-to-calculate-precision-recall-f1-and-more-for-deep-learning-models/)
+- [f1 score in keras metrics](https://medium.com/@aakashgoel12/how-to-add-user-defined-function-get-f1-score-in-keras-metrics-3013f979ce0d)
+
 
 **UNE-t**
 - [U-Net line by line explanation](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
+- [Regularization Techniques](https://medium.com/intelligentmachines/convolutional-neural-network-and-regularization-techniques-with-tensorflow-and-keras-5a09e6e65dc7)

@@ -1,11 +1,23 @@
-Libraries
+LIBRARIES
 
-- File management: os, shutil, glob
-- Google: drive,colab
-- Data Analysis: Numpy, Pandas
-- Image manipulation: OpenCV, PIL
-- Visualization: Matplotlib, Seaborn
-- Neural Networks: TensorFlow|Keras
-- Metrics: scikit-learn
+- Google: google-colab==1.0.0
+
+- File management: glob2==0.7
+		   tqdm==4.41.1
+
+
+- Data Analysis: numpy==1.18.5 
+		 pandas==1.1.5
+
+- Image manipulation: opencv-python==4.1.2.30 
+
+- Visualization: matplotlib==3.2.2 
+		 seaborn==0.11.0
+
+- Neural Networks: tensorflow==2.3.0
+		   Keras-Preprocessing==1.1.2
+		   Keras==2.4.3
+
+- Metrics: sklearn-pandas==1.8.0
 
 
