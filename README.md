@@ -223,7 +223,7 @@ Once you fit a deep learning neural network model, you must evaluate its perform
       `TN` = `True Negative` Real: No Leukemia | Prediction: No Leukemia
       <p <br/><br/>
       </p>
-- 3. **Sensitivity** and **specificity** are statistical measures of the performance of a binary classification test that are widely used in **medicine**.
+- 3. To understand our model’s performance at a deeper level we compute the sensitivity and the specificity.
 
       - **Sensitivity** measures the proportion of true positives that are correctly identified.
       - **Specificity** measures the proportion of true negatives.
@@ -238,7 +238,16 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
 ### Conclusions
 
-...
+In this project, we learned how to use the Keras deep learning library to train a Convolutional Neural Network for Leukemia classification.
+
+A total of 10661 images belonging to two classes are included in the training dataset:
+
+- Positive (+): 7272
+- Negative (-): 3389
+
+We can see there is a class imbalance in the data with almost 2x more positive samples than negative samples.
+
+The class imbalance, along with the challenging nature of the dataset, lead to us obtaining ~...% classification accuracy, ~...% sensitivity, and ~...% specificity.
 
 <p <br/><br/>
 </p>
