@@ -67,7 +67,7 @@ In total there are **15,135 images** from **118 patients** with two **labelled c
 **C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folders:
 
 <p align="center", >
-<img width="278" height="235" src="src/tree_C-NMC_Leukemia.jpg">
+  <img width="278" height="235" src="src/tree_C-NMC_Leukemia.jpg">
 </p>
 
 where:
@@ -120,14 +120,10 @@ For this reason, we create a **Brain** made up of two parts:
 Let’s get to a more detailed **implementation of U-Net** by Olaf Ronneberger, Philipp Fischer, and Thomas Brox (2015).
 
 
-<div>
 <p align="center", >
-<img width="518" height="345" src="src/u-net-architecture.png">
-    <p style="text-align: center;font-size:12px;">
-        U-Net architecture
-    </p>  
-  </a>
-</div>
+  <img width="518" height="345" src="src/u-net-architecture.png">
+</p>  
+
 
 First sight U-Net has an `U shape`. The architecture is symmetric and consists of two major parts:
 
@@ -145,14 +141,11 @@ For detailed information about CNN/U-Net structure, please check out these artic
 
 The task of the **Neural Network** for **Binary Classification** is to **distinguish** between diseased and healthy cells.
 
-<div>
+
 <p align="center", >
-<img width="392" height="285" src="src/NN.JPG">
-    <p style="text-align: center;font-size:12px;">
-        Neural Network
-    </p>  
-  </a>
-</div>
+  <img width="392" height="285" src="src/NN.JPG">
+</p>  
+
 
 
 ### Brain engineering
@@ -206,13 +199,13 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
     A confusion matrix tells us the performance of our algorithm or test, where the rows are the actual data and the columns the predictions.
 
-      `TP` = `True Positive` Real: Leukemia | Prediction: Leukemia
+      `TP` = **True Positive** Real: Leukemia | Prediction: Leukemia
 
-      `FN` = `False Negative` Real: Leukemia | Prediction: No Leukemia
+      `FN` = **False Negative** Real: Leukemia | Prediction: No Leukemia
 
-      `FP` = `False Positive` Real: No Leukemia | Prediction: Leukemia
+      `FP` = **False Positive** Real: No Leukemia | Prediction: Leukemia
 
-      `TN` = `True Negative` Real: No Leukemia | Prediction: No Leukemia
+      `TN` = **True Negative** Real: No Leukemia | Prediction: No Leukemia
 
       <p <br/><br/>
       </p>
@@ -243,12 +236,12 @@ We can see there is a class imbalance in the data with almost 2x more positive s
 **ANNa** is able to recognize the diseased cells but has some difficulty recognizing the healthy ones.
 
 The class imbalance, along with the challenging nature of the dataset, lead to us obtaining:
-  - ~**60%** Probability of false allert **accuracy**
+  - ~**60%** **accuracy**
   - ~**82% sensitivity (N)**
   - ~**18% specificity (N)**
   - ~**82% fall out**: Probability of false allert
 
-
+**ANNa** is confirming Kaggle’s results and since this is her first training we can say that is behaving quite successfully!
 
 <p <br/><br/>
 </p>
@@ -257,11 +250,11 @@ The class imbalance, along with the challenging nature of the dataset, lead to u
 
 - Improve **ANNa's performance** choosing other parameters.
 
-- **ANNa's Implementation** using **Pytorch** developed by Facebook’s AI research group. The advantage of Pytorch is that we can have more flexibility and control than Keras.
+- **ANNa's Implementation** using **Pytorch**, developed by Facebook’s AI research group. The advantage of Pytorch is that we can have more flexibility and control than Keras.
 
 - Apply **ANNa** to **biomedical images** that require to **localise** the **area of abnormality**.
 
-- Keep learning Computer Vision and Deep Learning!
+- Keep learning Deep Learning and Computer Vision!
 
 <p <br/><br/>
 </p>
