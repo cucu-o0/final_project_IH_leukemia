@@ -7,7 +7,7 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 <p <br/><br/>
 </p>
 
- *It’s not some kind of miracle, cancer doesn’t grow from yesterday to today. It’s a pretty long process. There are signs in the tissue, but the human eye has limited ability to detect what may be very small patterns.*
+ *It’s not some kind of miracle, cancer doesn’t grow from yesterday to today. It’s a pretty long process. There are signs in the tissue but the human eye has limited ability to detect what may be very small patterns.*
 
 <p style="text-align: right";>
   Regina Barzilay,<br />
@@ -20,50 +20,51 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 
 ## Contents
 
-- [Overview](#Overview)
-  - [Data](#Data)
-  - [Description of the Dataset](#Description_of_the_Dataset)
-- [Goal](#Goal)
+- [Overview](Overview)
+  - [Data](Data)
+  - [Dataset](Dataset)
+- [Goal](Goal)
 
-- [Link](#Link)
+- [ANNa](ANNa)
+  - [Meet ANNa](Meet_ANNa)
+      - [U-Net](U-Net)
+      - [ANNa's engineering](ANNa's_engineering)
+      - [Performance Charts](Performance_Charts)
+      - [Conclusions](Conclusions)
+      - [Future Improvements](Future_Improvements)
 
-- [ANNa](#ANNa)
-  - [Meet ANNa](#Meet_ANNa)
-      - [U-Net](#U-Net)
-      - [ANNa's engineering](#ANNa's_engineering)
-      - [Performance Charts](#Performance_Charts)
-      - [Conclusions](#Conclusions)
-      - [Future Improvements](#Future_Improvements)
+- [Project structure](Project_structure)
 
-- [Project structure](#Project_structure)
+- [Tools](Tools)
+  - [Cloud](Cloud)
+  - [Libraries](Libraries)
 
-- [Tools](#Tools)
-  - [Cloud](#Cloud)
-  - [Libraries](#Libraries)
-
-- [References](#References)
+- [References](References)
 
 
 ## Overview
 
-[Acute lymphoblastic leukemia (ALL)](https://en.wikipedia.org/wiki/Acute_lymphoblastic_leukemia)  is the most common type of childhood cancer and accounts for approximately 25% of the pediatric cancers.
+**Leukemia** is a malignant tumor of white blood cells (leukocytes). In [Acute lymphoblastic](https://en.wikipedia.org/wiki/Acute_lymphoblastic_leukemia) form, it represents 25% of all pediatric cancers.
 
-These cells have been segmented from microscopic images and are representative of images in the real-world because they contain some staining noise and illumination errors, although these errors have largely been fixed in the course of acquisition.
+The task of identifying immature leukemic blasts from normal cells under the microscope is challenging due to **morphological similarity** and labels were annotated by an expert oncologist.
 
-The task of identifying immature leukemic blasts from normal cells under the microscope is challenging due to morphological similarity and thus the ground truth labels were annotated by an expert oncologist.
+
 
 ### Data
 
-Data are obtained from a  [Kaggle dataset](https://www.kaggle.com/andrewmvd/leukemia-classification) with more than 15,000 images, some of them of young patients affected by leukemia and others with no leukemia.
+Data are obtained from a  [Kaggle dataset](https://www.kaggle.com/andrewmvd/leukemia-classification) with more than 15,000 cells'images, some of them of young patients affected by leukemia and others with no leukemia.
+
+Cells have been segmented from microscopic images and are representative of images in the real-world because they contain some staining noise and illumination errors, although these errors have largely been fixed in the course of acquisition.
 
 In total there are **15,135 images** from **118 patients** with two **labelled classes**:
 
-- **Normal cell**
-- **Leukemia blast**
+- **all**: Leukemia Blast
+- **hem**: Healthy Cells
+
 
 ### Description of the Dataset
 
-**C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folds:
+**C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folders:
 
 <p align="center", >
 <img width="278" height="235" src="src/tree_C-NMC_Leukemia.jpg">
@@ -73,7 +74,7 @@ where:
   - all: Leukemia cells
   - hem: Normal (healthy) cells
 
-We will use **training_data** to train the model and **validation_data** to evaluate it because it contains labeled images.
+We will use **training_data** to train the model and **validation_data** to evaluate it since this folder contains the labels.
 
 We won't use **testing_data** because images are not labeled and not useful for our project.
 
@@ -86,22 +87,15 @@ To do this, we use  **Neural Networks**, a computer system modeled on the **huma
 <p <br/><br/>
 </p>
 
-## Link
-To access the entire project, please open the following link:
-https://drive.google.com/drive/folders/1Tf5HlAoWrl_actixBloP_wcrP0V2pU92?usp=sharing
-
-<p <br/><br/>
-</p>
-
 ## ANNa
 
 To achieve our goal, we create **ANNa**, an **Artificial Neural Network anti-Leukemia**.
 
-**ANNa** is the combination of a **Convolutional Network** for **Biomedical Image Segmentation** (**U-Net**) and a Traditional **Neural Network** for **Binary Classification**.
+**ANNa** is the combination of a **Convolutional Network** for **Biomedical Image Segmentation** (**U-Net**) and a **Neural Network** for **Binary Classification**.
 
 We choose Convolutional Neural Networks because they are a category of Neural Networks that have proven very effective in areas such as image recognition and classification.
 
-### Meet ANNa's Brain
+### Meet ANNa
 
 Let's discover **ANNa's Brain**!
 
@@ -163,51 +157,49 @@ The task of the **Neural Network** for **Binary Classification** is to **disting
 
 ### Brain engineering
 
-During the training process of a Neural Network, our aim is to try and **minimize** the **loss function** by updating the values of the parameters and make our predictions as accurate as possible.
+During the training process of a Neural Network, our aim is to **minimize** the **loss function** by updating the values of the parameters and make our predictions as accurate as possible.
 
-We have tried different techniques to **optimize** the behaviour of our Neuronal Networks.
+We used different techniques to **optimize** the behaviour of our Neuronal Networks.
 
-- 1. **Image Data Augmentation**
+  - 1. **Optimizer**
 
-      Image data augmentation is used to artificially expand the size of a training dataset by creating **modified versions of images**.
+      **ANNa** is trained using the optimization algorithm **Adam** (adaptive moment estimation). Adam uses **Momentum** and **Adaptive Learning Rates** to converge faster.
 
-      Augmentation techniques can create variations of the images that can improve the ability of the train model to generalize what they have learned to new images.
-
-      In our case, data augmentation does not give any benefit to the training so we decide not to use it.
+      - **Momentum**: accelerates stochastic gradient descent in the relevant direction, as well as dampening oscillations.
+      - **Adaptive Learning Rate**: adjustments to the learning rate in the training phase.
 
       <p <br/><br/>
       </p>
-- 2. **Early Stopping**
+  - 2. **Learning Rate**
+
+      The **learning rate** is a hyperparameter that controls **how much to change the model** in response to the **estimated error** each time the model weights are updated.
+
+      LR = 0,001 (Initial LR for Adam's algorithm)
+      <p <br/><br/>
+      </p>    
+  - 3. **Early Stopping**
 
       **Early Stopping** is a regularization technique to combat the **overfitting issue**. With Early Stopping, we just stop training as soon as the validation error reaches the minimum.
       <p <br/><br/>
       </p>
+  - 4. **Image Data Augmentation**
 
-- 3. **Optimizer**
+      Image data augmentation is used to artificially expand the size of a training dataset by creating **modified versions of original images**.
 
-      **Deep learning neural** networks are trained using the optimization algorithm **Adam** (adaptive moment estimation).
-
-      The most beneficial nature of Adam optimization is its **adaptive learning rate**.
-
-- 4. **Learning Rate**
-
-      The **learning rate** is a hyperparameter that controls **how much to change the model** in response to the **estimated error** each time the model weights are updated.
+      In our case, data augmentation does not give any benefit to the training so we decide not to use it.
 
 ### Performance Charts
 
-Once you fit a deep learning neural network model, you must evaluate its performance on a test dataset (in our case **validation_data**).
+Once you fit a deep learning neural network model, you must evaluate its performance on a test dataset (in our case, **validation_data**).
 
 - 1. **Classification Report**
 
      Model Evaluation Metrics:
-    - **Accuracy** shows us how comfortable the model is with detecting the positive and negative class.
-    - **Precision** tells us about the success probability of making a correct positive class classification.
-    - **Recall** explains how sensitive the model is towards identifying the positive class.
-    - **F1-score** seeks a balance between precision and recall.
+    - **Accuracy** the ratio of the True predicted values to the Total predicted values.
+    - **Precision** for class 1 is, out of all predicted class values like 1, how many actually belong to class 1.
+    - **Recall** class 1 is, out of all the values that actually belong to class 1, how much is predicted as class 1.
+    - **F1-score** seeks a balance between precision and recall, it takes into account **false negatives** and **false positives**.
 
-    **F1-score** is the most complete when evaluating our test since it takes into account **false negatives** and **false positives**.
-
-    Even evaluating with the F1-score, it is interesting to expose both the precision and the recall, to see in more detail what type of error is made more often.
     <p <br/><br/>
     </p>
 - 2. **Confusion Matrix**
@@ -221,6 +213,7 @@ Once you fit a deep learning neural network model, you must evaluate its perform
       `FP` = `False Positive` Real: No Leukemia | Prediction: Leukemia
 
       `TN` = `True Negative` Real: No Leukemia | Prediction: No Leukemia
+
       <p <br/><br/>
       </p>
 - 3. To understand our model’s performance at a deeper level we compute the sensitivity and the specificity.
@@ -231,23 +224,31 @@ Once you fit a deep learning neural network model, you must evaluate its perform
       </p>
 - 4. **ROC curve**
 
-    **AUC-ROC** curve is a performance measurement for classification problem at various thresholds settings. It tells how much model is capable of distinguishing between classes.
+    **AUC-ROC** curve is a performance measurement for classification problem. It tells how much **model** is capable of **distinguishing** between **classes**.
 
 <p <br/><br/>
 </p>
 
 ### Conclusions
 
-In this project, we learned how to use the Keras deep learning library to train a Convolutional Neural Network for Leukemia classification.
+In this project, we learned how to use the **Keras** deep learning library to train a Convolutional Neural Network for **Leukemia classification**.
 
 A total of 10661 images belonging to two classes are included in the training dataset:
 
-- Positive (+): 7272
-- Negative (-): 3389
+- Positive (+): 7272 images
+- Negative (-): 3389 images
 
 We can see there is a class imbalance in the data with almost 2x more positive samples than negative samples.
 
-The class imbalance, along with the challenging nature of the dataset, lead to us obtaining ~...% classification accuracy, ~...% sensitivity, and ~...% specificity.
+**ANNa** is able to recognize the diseased cells but has some difficulty recognizing the healthy ones.
+
+The class imbalance, along with the challenging nature of the dataset, lead to us obtaining:
+  - ~**60%** Probability of false allert **accuracy**
+  - ~**82% sensitivity (N)**
+  - ~**18% specificity (N)**
+  - ~**82% fall out**: Probability of false allert
+
+
 
 <p <br/><br/>
 </p>
@@ -271,18 +272,16 @@ The class imbalance, along with the challenging nature of the dataset, lead to u
 
 - **README.md** Description of the project.
 - **src** Images and resources.
-- **input** Folder containing the original data.
+- **input** Link to the [Kaggle dataset](https://www.kaggle.com/andrewmvd/leukemia-classification)  
 - **notebooks**
   - **modules** Folder containing all the custom function created with Python.
   - **1.EDA**
   - **2.Image_preprocessing**
-  - **3.mini_ANNa**
-  - **3.1.Test_mini_ANNa**
-  - **4.ANNa**
-  - **4.1.Test_ANNa**
+  - **3.ANNa**
+  - **4.Test**
 
 - **output**
-  - **arrays**
+  - **arrays** ([Text document with the link to my Drive Folder](https://drive.google.com/drive/folders/1eyf80KBw0Q5j4iKq1sy1xnl38hcvsawP?usp=sharing))
   - **csv**
   - **models**
   - **viz**
