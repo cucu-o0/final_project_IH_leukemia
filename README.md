@@ -199,23 +199,23 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
     A confusion matrix tells us the performance of our algorithm or test, where the rows are the actual data and the columns the predictions.
 
-      **TP** = **True Positive** Real: Leukemia | Prediction: Leukemia
+    **TP** = **True Positive** Real: Leukemia | Prediction: Leukemia
 
-      **FP** = **False Positive** Real: No Leukemia | Prediction: Leukemia
+    **FP** = **False Positive** Real: No Leukemia | Prediction: Leukemia
 
-      **TN** = **True Negative** Real: No Leukemia | Prediction: No Leukemia
+    **TN** = **True Negative** Real: No Leukemia | Prediction: No Leukemia
 
-      **FN** = **False Negative** Real: Leukemia | Prediction: No Leukemia
+    **FN** = **False Negative** Real: Leukemia | Prediction: No Leukemia
 
-      <p <br/><br/>
-      </p>
+  <p <br/><br/>
+  </p>
 - 3. To understand our model’s performance at a deeper level we compute the sensitivity and the specificity.
 
       - **Sensitivity** measures the proportion of true positives that are correctly identified.
       - **Specificity** measures the proportion of true negatives.
 
-      <p <br/><br/>
-      </p>
+  <p <br/><br/>
+  </p>
 - 4. **ROC curve**
 
     **AUC-ROC** curve is a performance measurement for classification problem. It tells how much **model** is capable of **distinguishing** between **classes**.
