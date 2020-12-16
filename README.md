@@ -15,7 +15,7 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 </p>
 
 <p align="center", >
-  <img width="1250" height="450" src="src/leukemia_cells.jpg">
+  <img width="1250" height="392" src="src/leukemia_cells.jpg">
 </p>
 
 ## Contents
@@ -199,13 +199,13 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
     A confusion matrix tells us the performance of our algorithm or test, where the rows are the actual data and the columns the predictions.
 
-      `TP` = **True Positive** Real: Leukemia | Prediction: Leukemia
+      **TP** = **True Positive** Real: Leukemia | Prediction: Leukemia
 
-      `FN` = **False Negative** Real: Leukemia | Prediction: No Leukemia
+      **FP** = **False Positive** Real: No Leukemia | Prediction: Leukemia
 
-      `FP` = **False Positive** Real: No Leukemia | Prediction: Leukemia
+      **TN** = **True Negative** Real: No Leukemia | Prediction: No Leukemia
 
-      `TN` = **True Negative** Real: No Leukemia | Prediction: No Leukemia
+      **FN** = **False Negative** Real: Leukemia | Prediction: No Leukemia
 
       <p <br/><br/>
       </p>
@@ -213,6 +213,7 @@ Once you fit a deep learning neural network model, you must evaluate its perform
 
       - **Sensitivity** measures the proportion of true positives that are correctly identified.
       - **Specificity** measures the proportion of true negatives.
+
       <p <br/><br/>
       </p>
 - 4. **ROC curve**
@@ -239,7 +240,7 @@ The class imbalance, along with the challenging nature of the dataset, lead to u
   - ~**60%** **accuracy**
   - ~**82% sensitivity (N)**
   - ~**18% specificity (N)**
-  - ~**82% fall out**: Probability of false allert
+  - ~**82% fall-out** (probability of false allert)
 
 **ANNa** is confirming Kaggle’s results and since this is her first training we can say that is behaving quite successfully!
 
