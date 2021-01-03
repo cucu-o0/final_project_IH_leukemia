@@ -21,23 +21,25 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 ## Contents
 
 - [Overview](#Overview)
-  - [Data](#Data)
-  - [Dataset](#Dataset)
+  - Data
+  - Dataset
+
 - [Goal](#Goal)
 
-- [ANNa](#ANNa)
-  - [Meet ANNa](#Meet_ANNa)
-      - [U-Net](#U-Net)
-      - [ANNa's engineering](#ANNa's_engineering)
-      - [Performance Charts](#Performance_Charts)
-      - [Conclusions](#Conclusions)
-      - [Future Improvements](#Future_Improvements)
+- [Meet ANNa](#Meet_ANNa)
+  - ANNa's Brain
+      - U-Net
+      - Classification
+      - Brain engineering
+      - Performance Charts
+      - Conclusions
+      - Future Improvements
 
 - [Project structure](#Project_structure)
 
 - [Tools](#Tools)
-  - [Cloud](#Cloud)
-  - [Libraries](#Libraries)
+  - Cloud
+  - Libraries
 
 - [References](#References)
 
@@ -62,7 +64,7 @@ In total there are **15,135 images** from **118 patients** with two **labelled c
 - **hem**: Healthy Cells
 
 
-### Description of the Dataset
+### Dataset
 
 **C-NMC Leukemia** (Classification  of Normal vs Malignant Cells) is a folder that contains the data arranged in three folders:
 
@@ -87,7 +89,7 @@ To do this, we use  **Neural Networks**, a computer system modeled on the **huma
 <p <br/><br/>
 </p>
 
-## ANNa
+## Meet ANNa
 
 To achieve our goal, we create **ANNa**, an **Artificial Neural Network anti-Leukemia**.
 
@@ -95,7 +97,7 @@ To achieve our goal, we create **ANNa**, an **Artificial Neural Network anti-Leu
 
 We choose Convolutional Neural Networks because they are a category of Neural Networks that have proven very effective in areas such as image recognition and classification.
 
-### Meet ANNa
+### ANNa's Brain
 
 Let's discover **ANNa's Brain**!
 
