@@ -7,7 +7,7 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 <p <br/><br/>
 </p>
 
- *It’s not some kind of miracle, cancer doesn’t grow from yesterday to today. It’s a pretty long process. There are signs in the tissue but the human eye has limited ability to detect what may be very small patterns.*
+ *It’s not some kind of miracle, cancer doesn’t grow from yesterday to today. It’s a pretty long process. There are signs in the tissue, but the human eye has limited ability to detect what may be very small patterns.*
 
 <p style="text-align: right";>
   Regina Barzilay,<br />
@@ -20,26 +20,26 @@ Veronica Agnolutto | Data PT Barcelona Jun 2020
 
 ## Contents
 
-- [Overview](Overview)
-  - [Data](Data)
-  - [Dataset](Dataset)
-- [Goal](Goal)
+- [Overview](#Overview)
+  - [Data](#Data)
+  - [Dataset](#Dataset)
+- [Goal](#Goal)
 
-- [ANNa](ANNa)
-  - [Meet ANNa](Meet_ANNa)
-      - [U-Net](U-Net)
-      - [ANNa's engineering](ANNa's_engineering)
-      - [Performance Charts](Performance_Charts)
-      - [Conclusions](Conclusions)
-      - [Future Improvements](Future_Improvements)
+- [ANNa](#ANNa)
+  - [Meet ANNa](#Meet_ANNa)
+      - [U-Net](#U-Net)
+      - [ANNa's engineering](#ANNa's_engineering)
+      - [Performance Charts](#Performance_Charts)
+      - [Conclusions](#Conclusions)
+      - [Future Improvements](#Future_Improvements)
 
-- [Project structure](Project_structure)
+- [Project structure](#Project_structure)
 
-- [Tools](Tools)
-  - [Cloud](Cloud)
-  - [Libraries](Libraries)
+- [Tools](#Tools)
+  - [Cloud](#Cloud)
+  - [Libraries](#Libraries)
 
-- [References](References)
+- [References](#References)
 
 
 ## Overview
@@ -289,7 +289,7 @@ The class imbalance, along with the challenging nature of the dataset, lead to u
 
 **Cloud**
 
-This project was done entirely in the **cloud**, using:
+This project was done entirely in the **cloud** using:
 
 - **Google Drive**: cloud to store files
 - **Google Colab**: platform
